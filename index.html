@@ -418,6 +418,27 @@ body.empty .pass{opacity:0}
 @keyframes liftOut{to{opacity:0;translate:0 -24px;filter:blur(6px)}}
 
 .family,.sign,.lk-script,.lift-script{word-spacing:.22em}
+
+/* ---- Singh family scene ---- */
+.shot.fam{gap:min(1vh,8px)}
+.shot.fam .elders{margin:0;line-height:1.3}
+.fam-gap{margin-top:8px}
+.kid-line{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(1.5rem, min(6.4vw, 4vh), 2.2rem);color:var(--gold-soft);margin:0;text-shadow:0 0 18px rgba(233,201,127,.35)}
+.fam-cwt{margin-top:6px;font-size:clamp(1.25rem, min(5.2vw, 3.2vh), 1.8rem);color:var(--cream)}
+.fam-hearts{position:absolute;inset:-10% 0 0;pointer-events:none;overflow:visible;z-index:-1}
+.fam-hearts i{position:absolute;bottom:0;width:16px;height:16px;opacity:0}
+.fam-hearts i::before{content:"";position:absolute;inset:0;background:var(--blush);clip-path:path("M8 15 1.4 8.5A4.1 4.1 0 0 1 8 3a4.1 4.1 0 0 1 6.6 5.5Z")}
+.fam-hearts i:nth-child(even)::before{background:var(--powder)}
+.fam-hearts i:nth-child(3n)::before{background:var(--gold-soft)}
+.shot.fam.on .fam-hearts i{animation:famHeart 6s ease-in infinite}
+.fam-hearts i:nth-child(1){left:8%;animation-delay:.4s!important}
+.fam-hearts i:nth-child(2){left:22%;animation-delay:2.2s!important;scale:.7}
+.fam-hearts i:nth-child(3){left:36%;animation-delay:4s!important;scale:1.2}
+.fam-hearts i:nth-child(4){left:62%;animation-delay:1.3s!important}
+.fam-hearts i:nth-child(5){left:76%;animation-delay:3.1s!important;scale:.8}
+.fam-hearts i:nth-child(6){left:90%;animation-delay:5s!important;scale:1.1}
+.fam-hearts i:nth-child(7){left:50%;animation-delay:2.7s!important;scale:.6}
+@keyframes famHeart{0%{opacity:0;translate:0 0}12%{opacity:.85}70%{opacity:.6}100%{opacity:0;translate:24px -70vh;rotate:25deg}}
 </style>
 </head>
 <body>
@@ -684,7 +705,19 @@ body.empty .pass{opacity:0}
     <p class="italic" data-type="38">can't wait to cuddle you, little Vihaan!</p>
   </section>
 
-  <section class="shot final" data-shot="5">
+  <!-- 5: a message from the Singh family -->
+  <section class="shot fam" data-shot="5">
+    <div class="fam-hearts" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <p class="kicker" data-type="30">✦ With warm wishes from ✦</p>
+    <p class="family" data-type="75">The Singh Family</p>
+    <p class="elders" data-type="30">Mr. Budh Singh &amp; Mrs. Pyar Kour</p>
+    <p class="elders" data-type="30">Mr. Lakhwinder Singh &amp; Mrs. Hardeep Kour</p>
+    <p class="kicker sm fam-gap" data-type="30">and the little ones</p>
+    <p class="kid-line" data-type="70">✧ Seerat &amp; Saira ✧</p>
+    <p class="italic fam-cwt" id="famCwt" data-type="45">Can't wait to see you all!</p>
+  </section>
+
+  <section class="shot final" data-shot="6">
     <div class="card">
       <div class="panel info">
       <p class="kicker">Baby Welcome Party</p>
@@ -709,11 +742,6 @@ body.empty .pass{opacity:0}
         <p class="sign-pre">With love,</p>
         <p class="sign">The Singh Family</p>
         <svg class="rule" viewBox="0 0 160 12" aria-hidden="true"><path d="M2 6h60M98 6h60" stroke="currentColor" stroke-width="1"/><path d="M80 1l2.2 4.8L87 6l-4.8 1.2L80 12l-2.2-4.8L73 6l4.8-1.2Z" fill="currentColor"/></svg>
-        <ul class="elders-list">
-          <li><span>Mr. Budh Singh</span> <b>&amp;</b> <span>Mrs. Pyar Kour</span></li>
-          <li><span>Mr. Lakhwinder Singh</span> <b>&amp;</b> <span>Mrs. Hardeep Kour</span></li>
-        </ul>
-        <p class="kids"><span class="kids-label">and the little ones</span><span class="kid-names">✧ Seerat <b>&amp;</b> Saira ✧</span></p>
         <p class="cwt">Can't wait to see you all!</p>
         <p class="with-noddy"><span class="mini-noddy" id="miniNoddy" aria-hidden="true"></span><span class="nm">&amp; Noddy</span></p>
       </div>
@@ -735,7 +763,7 @@ body.empty .pass{opacity:0}
   const dpr = Math.min(devicePixelRatio || 1, 2);
   let W, H, stars = [], dust = [], sparks = [], shoot = null, clouds = [];
 
-  const FINAL = 5;
+  const FINAL = 6;
   { // Noddy signs the card too: reuse his drawing as a mini portrait
     const src = document.querySelector('.noddy-svg'), m = document.getElementById('miniNoddy');
     if (src && m) {
@@ -917,6 +945,7 @@ body.empty .pass{opacity:0}
     camTarget = 1.6; timers.push(setTimeout(() => camTarget = .25, 2200));
     if (i === 1) timers.push(setTimeout(flyStork, 300));
     if (i === 3) timers.push(setTimeout(() => burst(document.getElementById('name')), 2000));
+    if (i === 5) timers.push(setTimeout(() => burst(document.getElementById('famCwt')), 9800));
     if (i === FINAL) {
       document.body.classList.add('open'); camTarget = .25;
       shots[FINAL].scrollTop = 0; fitCard();
@@ -1100,7 +1129,8 @@ body.empty .pass{opacity:0}
       at(18100,() => show(2));
       at(27600,() => show(3));
       at(37600,() => show(4));
-      at(47600,() => show(FINAL));
+      at(47600,() => show(5));
+      at(59600,() => show(FINAL));
     });
   }
   // shrink the card just enough to fit the screen, so nobody has to scroll
