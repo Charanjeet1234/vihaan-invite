@@ -216,7 +216,8 @@ body.open .bar.bottom{transform:translateY(100%)}
 }
 body:not(.gated) .gate{opacity:0;visibility:hidden;pointer-events:none}
 .gate .kicker{animation:fadeUp 1.4s ease .2s both}
-.gate .family{font-size:clamp(2.4rem, min(10vw, 7vh), 4rem);animation:fadeUp 1.4s ease .5s both}
+.gate .family{font-size:clamp(2.6rem, min(11vw, 7.5vh), 4.6rem);max-width:12ch;text-wrap:balance;line-height:1.05;animation:fadeUp 1.4s ease .2s both}
+.gate .kicker{animation-delay:.6s}
 .seal{
   width:clamp(92px, 14vh, 128px);aspect-ratio:1;border:0;border-radius:50%;cursor:pointer;position:relative;
   background:radial-gradient(circle at 35% 30%, #fbe9bf 0%, var(--gold) 38%, var(--gold-deep) 78%, #8d6a2c 100%);
@@ -377,8 +378,8 @@ body:not(.gated) .gate{opacity:0;visibility:hidden;pointer-events:none}
 <canvas id="fx" class="layer" aria-hidden="true"></canvas>
 
 <div class="gate" id="gate" role="dialog" aria-label="Open the invitation">
-  <p class="kicker">✦ You are invited ✦</p>
-  <p class="family">A Little Celebration</p>
+  <p class="family gate-title">Vihaan's Welcome Party</p>
+  <p class="kicker">✦ Invitation ✦</p>
   <button class="seal" id="open" type="button" aria-label="Open invitation"><span>V</span></button>
   <p class="hint">Tap to open</p>
 </div>
