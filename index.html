@@ -123,6 +123,8 @@ body.open .bar.bottom{transform:translateY(100%)}
 }
 .shot.on{opacity:1;visibility:visible;filter:blur(0);translate:0 0;transition:opacity 1.4s ease, visibility 0s, filter 1.4s ease, translate 1.6s cubic-bezier(.2,.7,.2,1)}
 
+.script.phrase{font-family:var(--serif);font-style:italic;font-weight:600;letter-spacing:.005em;word-spacing:.04em;line-height:1.08;max-width:13ch;font-size:clamp(2.4rem, min(10vw, 7.4vh), 4.8rem)}
+.script:not(.phrase){word-spacing:.16em}
 .kicker{font-family:var(--sans);font-size:clamp(.66rem, min(2.6vw, 1.5vh), .82rem);letter-spacing:.38em;text-transform:uppercase;color:var(--gold-soft);margin:0}
 .kicker.sm{letter-spacing:.3em;color:var(--mist)}
 .italic{font-style:italic;font-weight:500;color:var(--mist);font-size:clamp(1.1rem, min(4.4vw, 3vh), 1.7rem);line-height:1.35;margin:0;max-width:28ch;text-wrap:balance}
@@ -215,7 +217,7 @@ body.open .bar.bottom{transform:translateY(100%)}
 
 
 /* Noddy the Maltese */
-.noddy{position:relative;width:clamp(96px, min(34vw, 16vh), 170px);margin-bottom:-2px}
+.noddy{position:relative;width:clamp(96px, min(34vw, 16vh), 170px);margin-bottom:14px}
 .noddy-svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 14px 22px rgba(6,5,15,.5))}
 .shot.on .noddy{animation:hop .9s cubic-bezier(.3,1.6,.5,1) .3s both}
 @keyframes hop{0%{opacity:0;translate:0 40px;scale:.8}100%{opacity:1;translate:0 0;scale:1}}
@@ -323,6 +325,17 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   .cwt{font-size:1.02rem;margin:1px 0 0}
   .with-noddy .mini-noddy{width:58px}
   .with-noddy .nm{font-size:1.8rem;padding-bottom:9px}
+}
+
+/* portrait phones: slimmer letterbox, tighter caps, everything centred */
+@media (max-aspect-ratio: 3/4){
+  :root{--bar:clamp(14px, 2.6vh, 26px)}
+  .kicker{letter-spacing:.24em;font-size:.68rem}
+  .kicker.sm{letter-spacing:.22em}
+  .stage{top:45%}
+  .shot{gap:10px}
+  .italic{font-size:1.2rem;max-width:24ch}
+  .elders{font-size:1.05rem}
 }
 </style>
 </head>
@@ -489,13 +502,13 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   <!-- 1 -->
   <section class="shot" data-shot="1">
     <p class="kicker">✦ A little star has arrived ✦</p>
-    <h1 class="script xl write">Welcome to the World, Little One!</h1>
+    <h1 class="script xl phrase write">Welcome to the World, Little One!</h1>
   </section>
 
   <!-- 2 -->
   <section class="shot" data-shot="2">
     <p class="italic">You are lovingly invited to a</p>
-    <p class="script xl write">Baby Welcome Party</p>
+    <p class="script xl phrase write">Baby Welcome Party</p>
     <p class="kicker sm later" style="--t:2.8s">in honour of our precious son</p>
   </section>
 
@@ -652,7 +665,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
     if (i === -1) return {y: H + 40, s: 1, o: 1};
     if (i === 0)  return {y: Math.max(topY, (H*.46 - bh*fitScale)/2 + topY/2), s: fitScale, o: 1};
     if (i === FINAL)  return {y: -bh*0.9, s: .6, o: 0};
-    return {y: topY, s: fitScale * (i === 3 ? 1 : .92), o: 1};
+    return {y: topY, s: fitScale * (i === 3 ? 1 : i === 4 ? .7 : .92), o: 1};
   }
   function placeBalloon(i, instant, dur=3200){
     const t = targetFor(i);
@@ -720,7 +733,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
     }
     // gold dust from basket + sparkles
     fctx.clearRect(0,0,W,H);
-    if (!reduce && bal.o > .2){
+    if (!reduce && bal.o > .2 && current !== 4){
       const r = balloon.getBoundingClientRect();
       const bx = r.left + r.width/2, by = r.top + r.height*.95;
       for (let n=0;n<2;n++) dust.push({x: bx + (Math.random()-.5)*r.width*.25, y: by, vx:(Math.random()-.5)*.35, vy: Math.random()*.7+.35, life:1, r: Math.random()*1.5+.5, c: Math.random()<.25 ? '247,198,211' : '248,231,187'});
