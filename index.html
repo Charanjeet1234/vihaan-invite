@@ -165,17 +165,17 @@ body.open .bar.bottom{transform:translateY(100%)}
 .card .crest{width:58px;height:auto;margin-top:-4px}
 .card .family{font-size:clamp(2.4rem, min(10vw, 7vh), 3.6rem)}
 .details{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(233,201,127,.3);border-block:1px solid rgba(233,201,127,.3);margin-top:4px}
-.details > div{background:rgba(22,19,60,.92);padding:clamp(8px,1.4vh,14px) 8px;display:flex;flex-direction:column;gap:3px;align-items:center}
+.details > div{background:rgba(22,19,60,.92);padding:clamp(6px,1.1vh,14px) 8px;display:flex;flex-direction:column;gap:3px;align-items:center}
 .details .venue{grid-column:1 / -1}
 .label{font-family:var(--sans);font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
 .value{font-size:clamp(1.15rem, min(4.4vw, 2.6vh), 1.45rem);font-weight:600;color:var(--cream);line-height:1.25}
 .value small{display:block;font-size:.85em;font-weight:400;font-style:italic;color:var(--mist)}
 .note{font-style:italic;color:var(--mist);font-size:clamp(1rem, min(3.8vw, 2.2vh), 1.15rem);margin:0;max-width:32ch;line-height:1.45}
-.actions{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
 .btn{
-  font-family:var(--sans);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;
+  font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
   color:var(--night-deep);background:linear-gradient(180deg, var(--gold-soft), var(--gold));
-  border:0;border-radius:999px;padding:11px 18px;text-decoration:none;cursor:pointer;
+  border:0;border-radius:999px;padding:10px 14px;text-decoration:none;cursor:pointer;
   box-shadow:0 4px 16px rgba(233,201,127,.3);transition:transform .2s ease, box-shadow .2s ease;
 }
 .btn.ghost{background:transparent;color:var(--gold-soft);border:1px solid rgba(233,201,127,.55);box-shadow:none}
@@ -212,12 +212,14 @@ body.open .bar.bottom{transform:translateY(100%)}
 @keyframes blink{0%,94%,100%{scale:1 1}96%{scale:1 .1}}
 .n-tongue{transform-box:fill-box;transform-origin:50% 0;animation:pant .5s ease-in-out infinite alternate}
 @keyframes pant{to{scale:1 1.25}}
-.n-bow{transform-box:fill-box;transform-origin:50% 60%;animation:bow 2.2s ease-in-out infinite}
-@keyframes bow{50%{rotate:-6deg}}
+.n-hat{transform-box:fill-box;transform-origin:30% 100%;rotate:8deg;animation:hat 2.4s ease-in-out infinite}
+@keyframes hat{50%{rotate:14deg}}
+.n-pom{transform-box:fill-box;transform-origin:50% 100%;animation:pom .6s ease-in-out infinite alternate}
+@keyframes pom{to{translate:0 -2px;scale:1.08}}
 .cloudseat{position:absolute;left:50%;bottom:-16px;width:150%;translate:-50% 0;z-index:-1;opacity:.95}
 .hearts{position:absolute;inset:0;pointer-events:none}
 .hearts i{position:absolute;bottom:62%;left:50%;width:14px;height:14px;opacity:0;font-style:normal}
-.hearts i::before{content:"";position:absolute;inset:0;background:var(--blush);clip-path:path("M7 13 1.2 7.4A3.6 3.6 0 0 1 7 2.6a3.6 3.6 0 0 1 5.8 4.8Z")}
+.hearts i::before{content:"";position:absolute;inset:0;background:var(--powder);clip-path:path("M7 13 1.2 7.4A3.6 3.6 0 0 1 7 2.6a3.6 3.6 0 0 1 5.8 4.8Z")}
 .shot.on .hearts i{animation:heart 2.6s ease-out infinite}
 .hearts i:nth-child(1){--x:-60px;animation-delay:1s!important}
 .hearts i:nth-child(2){--x:50px;animation-delay:1.7s!important;scale:.8}
@@ -226,10 +228,10 @@ body.open .bar.bottom{transform:translateY(100%)}
 .hearts i:nth-child(2)::before,.hearts i:nth-child(4)::before{background:var(--gold-soft)}
 @keyframes heart{0%{opacity:0;translate:0 0}15%{opacity:1}100%{opacity:0;translate:var(--x) -110px;rotate:20deg}}
 .noddy-name{font-size:clamp(2.6rem, min(11vw, 8vh), 4.6rem)}
-.with-noddy{display:flex;align-items:center;justify-content:center;gap:8px;margin:0}
-.with-noddy .mini-noddy{width:40px;flex:none}
+.with-noddy{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin:2px 0 0}
+.with-noddy .mini-noddy{width:clamp(60px, 8vh, 84px);flex:none;margin-bottom:-4px;filter:drop-shadow(0 6px 10px rgba(6,5,15,.45))}
 .with-noddy .mini-noddy svg{display:block;width:100%;height:auto}
-.with-noddy .nm{font-family:var(--display);font-size:1.7rem;color:var(--gold-soft);line-height:1}
+.with-noddy .nm{font-family:var(--display);font-size:clamp(2rem, min(8vw, 4.6vh), 2.6rem);color:var(--gold-soft);line-height:1;padding-bottom:10px;text-shadow:0 0 18px rgba(233,201,127,.45)}
 
 /* stork delivering the baby */
 #stork{position:fixed;left:0;top:27%;z-index:5;width:min(270px, 46vw);pointer-events:none;opacity:0;translate:-110% 0}
@@ -465,9 +467,10 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
 
   <!-- 4 finale -->
   <section class="shot" data-shot="4">
-    <div class="noddy"><svg class="cloudseat" viewBox="0 0 300 80" aria-hidden="true"><g fill="#efe7f5"><circle cx="70" cy="50" r="28"/><circle cx="120" cy="38" r="34"/><circle cx="180" cy="36" r="32"/><circle cx="230" cy="50" r="26"/><rect x="44" y="48" width="212" height="28" rx="14"/></g></svg><svg class="noddy-svg" viewBox="0 0 200 200" aria-hidden="true">
+    <div class="noddy"><svg class="cloudseat" viewBox="0 0 300 80" aria-hidden="true"><g fill="#efe7f5"><circle cx="70" cy="50" r="28"/><circle cx="120" cy="38" r="34"/><circle cx="180" cy="36" r="32"/><circle cx="230" cy="50" r="26"/><rect x="44" y="48" width="212" height="28" rx="14"/></g></svg><svg class="noddy-svg" viewBox="0 -20 200 220" aria-hidden="true">
   <defs>
     <radialGradient id="NFUR" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".7" stop-color="#f8f2ea"/><stop offset="1" stop-color="#e6dccf"/></radialGradient>
+    <linearGradient id="NHAT" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#9cc6f5"/><stop offset=".55" stop-color="#5f97e0"/><stop offset="1" stop-color="#3f74c4"/></linearGradient>
     <radialGradient id="NEAR" cx="50%" cy="30%" r="80%"><stop offset="0" stop-color="#fbf6ef"/><stop offset="1" stop-color="#e2d6c6"/></radialGradient>
   </defs>
   <g class="n-tail"><path d="M142 150c18-6 30-22 34-40 3-12 14-12 14 0 0 26-20 50-46 54Z" fill="url(#NFUR)"/><circle cx="182" cy="104" r="10" fill="#fff"/><circle cx="176" cy="122" r="9" fill="#fbf7f1"/></g>
@@ -478,7 +481,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   <rect x="72" y="150" width="20" height="44" rx="10" fill="#fffdf9"/>
   <rect x="108" y="150" width="20" height="44" rx="10" fill="#fffdf9"/>
   <path d="M76 190h12M112 190h12" stroke="#e2d6c6" stroke-width="1.4" stroke-linecap="round"/>
-  <path d="M68 124c20 12 44 12 64 0" stroke="#f7a8bd" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M68 124c20 12 44 12 64 0" stroke="#6fa3e6" stroke-width="7" fill="none" stroke-linecap="round"/>
   <circle cx="100" cy="137" r="7" fill="#e9c97f"/><path d="M97 137h6" stroke="#bf9447" stroke-width="1.2"/>
   <g class="n-head">
     <g class="n-ear l"><path d="M58 64c-18 6-24 34-20 58 3 18 16 26 26 20 8-5 8-22 6-40-2-16-4-32-12-38Z" fill="url(#NEAR)"/><circle cx="44" cy="118" r="9" fill="#efe6da"/><circle cx="56" cy="130" r="8" fill="#f3ebe0"/></g>
@@ -488,8 +491,13 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
       <circle cx="70" cy="60" r="16"/><circle cx="130" cy="60" r="16"/><circle cx="100" cy="44" r="18"/>
       <circle cx="64" cy="96" r="14"/><circle cx="136" cy="96" r="14"/><circle cx="100" cy="116" r="18"/>
     </g>
-    <path d="M92 40c-2-12 4-20 8-22 4 2 10 10 8 22Z" fill="#fff"/>
-    <g class="n-bow"><path d="M100 34l-16-9c-4-2-7 1-6 5l2 10c1 3 4 4 7 3Z" fill="#f7a8bd"/><path d="M100 34l16-9c4-2 7 1 6 5l-2 10c-1 3-4 4-7 3Z" fill="#f7a8bd"/><circle cx="100" cy="35" r="4.5" fill="#f58fab"/></g>
+    <g class="n-hat">
+      <path d="M78 44L104 -8L124 40C112 48 90 50 78 44Z" fill="url(#NHAT)"/>
+      <path d="M88 26l10-3M94 12l8-2M84 36l18-4M106 20l8 3M112 32l9 2" stroke="#ffffff" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M102 4l1.4 3 3.2.3-2.4 2.1.7 3.1-2.9-1.7-2.9 1.7.7-3.1-2.4-2.1 3.2-.3Z" fill="#f8e7bb"/>
+      <path d="M76 42c14 8 36 8 50-2" stroke="#fdf6ea" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <g class="n-pom"><circle cx="104" cy="-9" r="8" fill="#fff"/><circle cx="101" cy="-12" r="3" fill="#fff" opacity=".9"/><circle cx="108" cy="-6" r="2.4" fill="#e6eefb"/></g>
+    </g>
     <g class="n-eyes"><circle cx="84" cy="80" r="6.5" fill="#1d1622"/><circle cx="116" cy="80" r="6.5" fill="#1d1622"/><circle cx="86.4" cy="77.6" r="2.2" fill="#fff"/><circle cx="118.4" cy="77.6" r="2.2" fill="#fff"/></g>
     <ellipse cx="100" cy="100" rx="17" ry="13" fill="#fffefb"/>
     <path d="M93 92c0-3 3-4 7-4s7 1 7 4c0 3-4 6-7 6s-7-3-7-6Z" fill="#1d1622"/>
