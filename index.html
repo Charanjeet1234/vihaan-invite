@@ -337,6 +337,26 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   .italic{font-size:1.2rem;max-width:24ch}
   .elders{font-size:1.05rem}
 }
+
+/* ---- typographic lockups: mixed sizes, one phrase per line ---- */
+.lockup{display:flex;flex-direction:column;align-items:center;margin:0;line-height:1;text-align:center}
+.lockup > span{display:block;white-space:nowrap}
+.gold{
+  background:linear-gradient(100deg, var(--gold-deep) 0%, var(--gold-soft) 28%, var(--gold) 52%, var(--cream) 70%, var(--gold-deep) 100%);
+  background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 6s linear infinite;filter:drop-shadow(0 2px 14px rgba(233,201,127,.32));
+  padding:.12em .3em;margin:-.12em -.3em;
+}
+.lk-caps{font-family:var(--sans);font-weight:500;font-size:clamp(.82rem, min(3.6vw, 2.2vh), 1.15rem);letter-spacing:.42em;padding-left:.42em;text-transform:uppercase;color:var(--mist)}
+.lk-caps.sm{font-size:clamp(.68rem, min(3vw, 1.8vh), .9rem);letter-spacing:.32em;padding-left:.32em;color:var(--gold-soft)}
+.lk-big{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(4.2rem, min(22vw, 14vh), 8.6rem);line-height:.92;letter-spacing:-.01em}
+.lk-script{font-family:var(--display);font-size:clamp(2.4rem, min(11vw, 7vh), 4.4rem);color:var(--gold-soft);padding:.25em .4em .15em;margin:-.3em -.4em -.12em;text-shadow:0 0 22px rgba(233,201,127,.35)}
+.lk-script.lk-xl{font-size:clamp(3.2rem, min(15vw, 9.5vh), 6rem);margin-bottom:-.28em}
+.lk-serifcaps{font-family:var(--serif);font-weight:600;font-size:clamp(1.6rem, min(7.6vw, 5vh), 3.2rem);letter-spacing:.14em;text-transform:uppercase}
+.lk-serifcaps.gold{padding:.12em .16em .12em .3em;margin:-.12em -.16em -.12em -.3em}
+.lk-italic{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.4rem, min(6.4vw, 4vh), 2.2rem);color:var(--cream);margin-top:4px}
+.gate-lock{animation:fadeUp 1.4s ease .2s both;gap:2px}
+.gate .kicker{margin-top:4px}
 </style>
 </head>
 <body>
@@ -484,7 +504,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
 <canvas id="fx" class="layer" aria-hidden="true"></canvas>
 
 <div class="gate" id="gate" role="dialog" aria-label="Open the invitation">
-  <p class="family gate-title">Vihaan's Welcome Party</p>
+  <p class="lockup gate-lock" aria-label="Vihaan's Welcome Party"><span class="lk-script lk-xl">Vihaan's</span><span class="lk-serifcaps gold">Welcome Party</span></p>
   <p class="kicker">✦ Invitation ✦</p>
   <button class="seal" id="open" type="button" aria-label="Open invitation"><span>V</span></button>
   <p class="hint">Tap to open</p>
@@ -496,19 +516,19 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
     <p class="kicker">With hearts full of joy</p>
     <p class="family">The Singh Family</p>
     <p class="elders later" style="--t:1s">Mr. Sukhdev Singh &amp; Mrs. Kamal Kour</p>
-    <p class="italic later" style="--t:1.9s">are delighted to share some very happy news</p>
+    <p class="lockup later" style="--t:1.9s"><span class="lk-caps sm">are delighted to share</span><span class="lk-italic">some very happy news</span></p>
   </section>
 
   <!-- 1 -->
   <section class="shot" data-shot="1">
     <p class="kicker">✦ A little star has arrived ✦</p>
-    <h1 class="script xl phrase write">Welcome to the World, Little One!</h1>
+    <h1 class="lockup write" aria-label="Welcome to the World, Little One!"><span class="lk-caps">Welcome to the</span><span class="lk-big gold">World</span><span class="lk-script">Little One!</span></h1>
   </section>
 
   <!-- 2 -->
   <section class="shot" data-shot="2">
-    <p class="italic">You are lovingly invited to a</p>
-    <p class="script xl phrase write">Baby Welcome Party</p>
+    <p class="kicker sm">You are lovingly invited to a</p>
+    <p class="lockup write" aria-label="Baby Welcome Party"><span class="lk-script lk-xl">Baby</span><span class="lk-serifcaps gold">Welcome Party</span></p>
     <p class="kicker sm later" style="--t:2.8s">in honour of our precious son</p>
   </section>
 
