@@ -195,6 +195,42 @@ body.open .bar.bottom{transform:translateY(100%)}
 .phone:focus-visible{outline:2px solid var(--gold-soft);outline-offset:3px}
 .elders.sm{font-size:clamp(.95rem, min(3.6vw, 2.1vh), 1.1rem);font-weight:500;margin-top:4px}
 
+
+/* Noddy the Maltese */
+.noddy{position:relative;width:clamp(96px, min(34vw, 16vh), 170px);margin-bottom:-2px}
+.noddy-svg{display:block;width:100%;height:auto;overflow:visible;filter:drop-shadow(0 14px 22px rgba(6,5,15,.5))}
+.shot.on .noddy{animation:hop .9s cubic-bezier(.3,1.6,.5,1) .3s both}
+@keyframes hop{0%{opacity:0;translate:0 40px;scale:.8}100%{opacity:1;translate:0 0;scale:1}}
+.n-tail{transform-box:fill-box;transform-origin:0% 100%;animation:wag .32s ease-in-out infinite alternate}
+@keyframes wag{from{rotate:-14deg}to{rotate:16deg}}
+.n-head{transform-box:fill-box;transform-origin:50% 90%;animation:tilt 3.4s ease-in-out infinite}
+@keyframes tilt{0%,100%{rotate:0deg}35%{rotate:-7deg}70%{rotate:5deg}}
+.n-ear{transform-box:fill-box;animation:earFlop 1.7s ease-in-out infinite}
+.n-ear.l{transform-origin:70% 5%}.n-ear.r{transform-origin:30% 5%;animation-delay:.3s}
+@keyframes earFlop{50%{rotate:5deg}}
+.n-eyes{transform-box:fill-box;transform-origin:50% 50%;animation:blink 4.2s infinite}
+@keyframes blink{0%,94%,100%{scale:1 1}96%{scale:1 .1}}
+.n-tongue{transform-box:fill-box;transform-origin:50% 0;animation:pant .5s ease-in-out infinite alternate}
+@keyframes pant{to{scale:1 1.25}}
+.n-bow{transform-box:fill-box;transform-origin:50% 60%;animation:bow 2.2s ease-in-out infinite}
+@keyframes bow{50%{rotate:-6deg}}
+.cloudseat{position:absolute;left:50%;bottom:-16px;width:150%;translate:-50% 0;z-index:-1;opacity:.95}
+.hearts{position:absolute;inset:0;pointer-events:none}
+.hearts i{position:absolute;bottom:62%;left:50%;width:14px;height:14px;opacity:0;font-style:normal}
+.hearts i::before{content:"";position:absolute;inset:0;background:var(--blush);clip-path:path("M7 13 1.2 7.4A3.6 3.6 0 0 1 7 2.6a3.6 3.6 0 0 1 5.8 4.8Z")}
+.shot.on .hearts i{animation:heart 2.6s ease-out infinite}
+.hearts i:nth-child(1){--x:-60px;animation-delay:1s!important}
+.hearts i:nth-child(2){--x:50px;animation-delay:1.7s!important;scale:.8}
+.hearts i:nth-child(3){--x:-20px;animation-delay:2.4s!important;scale:1.2}
+.hearts i:nth-child(4){--x:70px;animation-delay:3.1s!important}
+.hearts i:nth-child(2)::before,.hearts i:nth-child(4)::before{background:var(--gold-soft)}
+@keyframes heart{0%{opacity:0;translate:0 0}15%{opacity:1}100%{opacity:0;translate:var(--x) -110px;rotate:20deg}}
+.noddy-name{font-size:clamp(2.6rem, min(11vw, 8vh), 4.6rem)}
+.with-noddy{display:flex;align-items:center;justify-content:center;gap:8px;margin:0}
+.with-noddy .mini-noddy{width:40px;flex:none}
+.with-noddy .mini-noddy svg{display:block;width:100%;height:auto}
+.with-noddy .nm{font-family:var(--display);font-size:1.7rem;color:var(--gold-soft);line-height:1}
+
 /* stork delivering the baby */
 #stork{position:fixed;left:0;top:27%;z-index:5;width:min(270px, 46vw);pointer-events:none;opacity:0;translate:-110% 0}
 #stork.fly{animation:storkFly 9s cubic-bezier(.35,.05,.6,.95) forwards}
@@ -259,6 +295,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
 
 <!-- baby things in bubbles -->
 <div aria-hidden="true">
+  <div class="toy" style="left:36%;--w:50px;--d:44s;--dl:-16s;--dx:-24px"><div class="in"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#fdf6ea" fill-opacity=".38" stroke="#fff" stroke-opacity=".55" stroke-width="1.2"/><path d="M14 18a20 20 0 0 1 12-9" stroke="#fff" stroke-opacity=".8" stroke-width="2.4" fill="none" stroke-linecap="round"/><g transform="rotate(-25 30 30)" fill="#fdf6ea"><rect x="18" y="26" width="24" height="8" rx="3"/><circle cx="17" cy="26" r="5"/><circle cx="17" cy="34" r="5"/><circle cx="43" cy="26" r="5"/><circle cx="43" cy="34" r="5"/></g></svg></div></div>
   <div class="toy" style="left:6%;--w:58px;--d:34s;--dl:-6s;--dx:40px"><div class="in"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#bdd5f3" fill-opacity=".38" stroke="#fff" stroke-opacity=".55" stroke-width="1.2"/><path d="M14 18a20 20 0 0 1 12-9" stroke="#fff" stroke-opacity=".8" stroke-width="2.4" fill="none" stroke-linecap="round"/><g transform="translate(14 14)"><path d="M6 4h12v14c0 2 2 3 4 3h3c4 0 6 3 4 6H6c-2 0-3-1-3-3V7c0-2 1-3 3-3Z" fill="#bdd5f3"/><rect x="5" y="3" width="14" height="5" rx="2" fill="#fdf6ea"/><circle cx="12" cy="2.5" r="2.6" fill="#fdf6ea"/><path d="M4 26h25" stroke="#8fb3e0" stroke-width="2" stroke-linecap="round"/></g></svg></div></div>
   <div class="toy" style="left:24%;--w:50px;--d:38s;--dl:-20s;--dx:-30px"><div class="in"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#f7c6d3" fill-opacity=".38" stroke="#fff" stroke-opacity=".55" stroke-width="1.2"/><path d="M14 18a20 20 0 0 1 12-9" stroke="#fff" stroke-opacity=".8" stroke-width="2.4" fill="none" stroke-linecap="round"/><g transform="translate(13 13)"><path d="M14 16l12 12" stroke="#e9c97f" stroke-width="3.2" stroke-linecap="round"/><circle cx="28" cy="30" r="4" fill="none" stroke="#e9c97f" stroke-width="2.4"/><circle cx="11" cy="11" r="9" fill="#f7c6d3"/><circle cx="8" cy="9" r="1.6" fill="#fff"/><circle cx="13" cy="13" r="1.6" fill="#fff"/><circle cx="13" cy="7" r="1.3" fill="#fff"/></g></svg></div></div>
   <div class="toy" style="left:72%;--w:56px;--d:32s;--dl:-12s;--dx:-36px"><div class="in"><svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="28" fill="#bfe7d7" fill-opacity=".38" stroke="#fff" stroke-opacity=".55" stroke-width="1.2"/><path d="M14 18a20 20 0 0 1 12-9" stroke="#fff" stroke-opacity=".8" stroke-width="2.4" fill="none" stroke-linecap="round"/><g transform="translate(20 9)"><path d="M10 0c2 0 3 2 3 4v2H7V4c0-2 1-4 3-4Z" fill="#f2b88c"/><rect x="4" y="6" width="12" height="4" rx="1.5" fill="#bfe7d7"/><rect x="3" y="10" width="14" height="22" rx="5" fill="#fdf6ea" fill-opacity=".95"/><rect x="3" y="19" width="14" height="13" rx="5" fill="#fff"/><path d="M6 14h3M6 18h3M6 22h3" stroke="#8fc9b3" stroke-width="1.2"/></g></svg></div></div>
@@ -427,13 +464,52 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   </section>
 
   <!-- 4 finale -->
-  <section class="shot final" data-shot="4">
+  <section class="shot" data-shot="4">
+    <div class="noddy"><svg class="cloudseat" viewBox="0 0 300 80" aria-hidden="true"><g fill="#efe7f5"><circle cx="70" cy="50" r="28"/><circle cx="120" cy="38" r="34"/><circle cx="180" cy="36" r="32"/><circle cx="230" cy="50" r="26"/><rect x="44" y="48" width="212" height="28" rx="14"/></g></svg><svg class="noddy-svg" viewBox="0 0 200 200" aria-hidden="true">
+  <defs>
+    <radialGradient id="NFUR" cx="45%" cy="35%" r="70%"><stop offset="0" stop-color="#ffffff"/><stop offset=".7" stop-color="#f8f2ea"/><stop offset="1" stop-color="#e6dccf"/></radialGradient>
+    <radialGradient id="NEAR" cx="50%" cy="30%" r="80%"><stop offset="0" stop-color="#fbf6ef"/><stop offset="1" stop-color="#e2d6c6"/></radialGradient>
+  </defs>
+  <g class="n-tail"><path d="M142 150c18-6 30-22 34-40 3-12 14-12 14 0 0 26-20 50-46 54Z" fill="url(#NFUR)"/><circle cx="182" cy="104" r="10" fill="#fff"/><circle cx="176" cy="122" r="9" fill="#fbf7f1"/></g>
+  <g fill="url(#NFUR)">
+    <ellipse cx="100" cy="152" rx="50" ry="40"/>
+    <circle cx="62" cy="168" r="18"/><circle cx="138" cy="168" r="18"/><circle cx="100" cy="182" r="16"/>
+  </g>
+  <rect x="72" y="150" width="20" height="44" rx="10" fill="#fffdf9"/>
+  <rect x="108" y="150" width="20" height="44" rx="10" fill="#fffdf9"/>
+  <path d="M76 190h12M112 190h12" stroke="#e2d6c6" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M68 124c20 12 44 12 64 0" stroke="#f7a8bd" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="100" cy="137" r="7" fill="#e9c97f"/><path d="M97 137h6" stroke="#bf9447" stroke-width="1.2"/>
+  <g class="n-head">
+    <g class="n-ear l"><path d="M58 64c-18 6-24 34-20 58 3 18 16 26 26 20 8-5 8-22 6-40-2-16-4-32-12-38Z" fill="url(#NEAR)"/><circle cx="44" cy="118" r="9" fill="#efe6da"/><circle cx="56" cy="130" r="8" fill="#f3ebe0"/></g>
+    <g class="n-ear r"><path d="M142 64c18 6 24 34 20 58-3 18-16 26-26 20-8-5-8-22-6-40 2-16 4-32 12-38Z" fill="url(#NEAR)"/><circle cx="156" cy="118" r="9" fill="#efe6da"/><circle cx="144" cy="130" r="8" fill="#f3ebe0"/></g>
+    <g fill="url(#NFUR)">
+      <circle cx="100" cy="82" r="46"/>
+      <circle cx="70" cy="60" r="16"/><circle cx="130" cy="60" r="16"/><circle cx="100" cy="44" r="18"/>
+      <circle cx="64" cy="96" r="14"/><circle cx="136" cy="96" r="14"/><circle cx="100" cy="116" r="18"/>
+    </g>
+    <path d="M92 40c-2-12 4-20 8-22 4 2 10 10 8 22Z" fill="#fff"/>
+    <g class="n-bow"><path d="M100 34l-16-9c-4-2-7 1-6 5l2 10c1 3 4 4 7 3Z" fill="#f7a8bd"/><path d="M100 34l16-9c4-2 7 1 6 5l-2 10c-1 3-4 4-7 3Z" fill="#f7a8bd"/><circle cx="100" cy="35" r="4.5" fill="#f58fab"/></g>
+    <g class="n-eyes"><circle cx="84" cy="80" r="6.5" fill="#1d1622"/><circle cx="116" cy="80" r="6.5" fill="#1d1622"/><circle cx="86.4" cy="77.6" r="2.2" fill="#fff"/><circle cx="118.4" cy="77.6" r="2.2" fill="#fff"/></g>
+    <ellipse cx="100" cy="100" rx="17" ry="13" fill="#fffefb"/>
+    <path d="M93 92c0-3 3-4 7-4s7 1 7 4c0 3-4 6-7 6s-7-3-7-6Z" fill="#1d1622"/>
+    <path d="M97 90.5c1-.8 3-.8 4 0" stroke="#fff" stroke-width="1.2" stroke-linecap="round" opacity=".7"/>
+    <path d="M100 98v5M92 104q8 6 16 0" stroke="#1d1622" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+    <path class="n-tongue" d="M96 106c0 7 8 7 8 0Z" fill="#f58fab"/>
+    <circle cx="74" cy="96" r="5" fill="#f7a8bd" opacity=".55"/><circle cx="126" cy="96" r="5" fill="#f7a8bd" opacity=".55"/>
+  </g>
+</svg><div class="hearts"><i></i><i></i><i></i><i></i></div></div>
+    <p class="kicker">✦ And a very excited big brother ✦</p>
+    <p class="script noddy-name write">Noddy</p>
+    <p class="italic later" style="--t:2.6s">can't wait to cuddle you, little Vihaan!</p>
+  </section>
+
+  <section class="shot final" data-shot="5">
     <div class="card">
       <p class="kicker">Baby Welcome Party</p>
       <p class="family">Vihaan Singh</p>
       <p class="kicker sm">Proud Parents</p>
       <p class="parents">Charanjeet &amp; Gunjan</p>
-      <p class="note">Come shower our little one with your love and blessings.</p>
       <div class="details">
         <div><span class="label">Date</span><span class="value">11 January 2027<small>Monday</small></span></div>
         <div><span class="label">Time</span><span class="value">8:00 PM<small>onwards</small></span></div>
@@ -450,6 +526,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
       <p class="sign-pre">With love,</p>
       <p class="sign">The Singh Family</p>
       <p class="elders sm">Mr. Sukhdev Singh &amp; Mrs. Kamal Kour</p>
+      <p class="with-noddy"><span class="mini-noddy" id="miniNoddy" aria-hidden="true"></span><span class="nm">&amp; Noddy</span></p>
     </div>
   </section>
 </main>
@@ -467,6 +544,16 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   const dpr = Math.min(devicePixelRatio || 1, 2);
   let W, H, stars = [], dust = [], sparks = [], shoot = null, clouds = [];
 
+  const FINAL = 5;
+  { // Noddy signs the card too: reuse his drawing as a mini portrait
+    const src = document.querySelector('.noddy-svg'), m = document.getElementById('miniNoddy');
+    if (src && m) {
+      const c = src.cloneNode(true);
+      c.querySelectorAll('[id]').forEach(n => n.id = n.id + 'm');
+      c.querySelectorAll('[fill^="url(#N"]').forEach(n => n.setAttribute('fill', n.getAttribute('fill').replace(')', 'm)')));
+      m.appendChild(c);
+    }
+  }
   const toys = [...document.querySelectorAll('.toy')].map(el => ({el, op: 1}));
   /* clouds */
   const tpl = document.getElementById('cloudTpl');
@@ -504,7 +591,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
     const fitScale = Math.min(1, (H*.46 - topY - 8) / bh);
     if (i === -1) return {y: H + 40, s: 1, o: 1};
     if (i === 0)  return {y: Math.max(topY, (H*.46 - bh*fitScale)/2 + topY/2), s: fitScale, o: 1};
-    if (i === 4)  return {y: -bh*0.9, s: .6, o: 0};
+    if (i === FINAL)  return {y: -bh*0.9, s: .6, o: 0};
     return {y: topY, s: fitScale * (i === 3 ? 1 : .92), o: 1};
   }
   function placeBalloon(i, instant, dur=3200){
@@ -559,7 +646,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
       if (c.yy*H < -h - 20){ c.yy = 1 + Math.random()*.4; c.x = Math.random()*.9 - .1; }
       c.dx += dt*.0003;
       c.el.style.transform = `translate(${c.x*W + Math.sin(c.dx)*30}px, ${c.yy*H}px)`;
-      const cy = c.yy*H + h/2, inBand = current !== 4 && cy > H*.4 && cy < H*.92;
+      const cy = c.yy*H + h/2, inBand = current !== FINAL && cy > H*.4 && cy < H*.92;
       c.op += ((inBand ? .12 : 1) - c.op) * .06;
       c.el.style.opacity = (c.op * c.base).toFixed(3);
     }
@@ -567,7 +654,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
     // floating baby things fade while behind the words
     for (const ty of toys){
       const r = ty.el.getBoundingClientRect(), cy = r.top + r.height/2;
-      const inBand = current !== 4 && cy > H*.42 && cy < H*.92 && r.right > W*.12 && r.left < W*.88;
+      const inBand = current !== FINAL && cy > H*.42 && cy < H*.92 && r.right > W*.12 && r.left < W*.88;
       ty.op += ((inBand ? .12 : 1) - ty.op) * .08;
       ty.el.style.opacity = (ty.op * .95).toFixed(3);
     }
@@ -607,11 +694,11 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   function show(i){
     current = i;
     shots.forEach((s, k) => s.classList.toggle('on', k === i));
-    placeBalloon(i, false, i === 4 ? 2600 : 3000);
+    placeBalloon(i, false, i === FINAL ? 2600 : 3000);
     camTarget = 1.6; timers.push(setTimeout(() => camTarget = .25, 2200));
     if (i === 1) timers.push(setTimeout(flyStork, 300));
     if (i === 3) timers.push(setTimeout(() => burst(document.getElementById('name')), 2000));
-    if (i === 4) { document.body.classList.add('open'); camTarget = .25; }
+    if (i === FINAL) { document.body.classList.add('open'); camTarget = .25; }
   }
   const stork = document.getElementById('stork');
   function flyStork(){ stork.classList.remove('fly'); void stork.offsetWidth; stork.classList.add('fly'); }
@@ -623,18 +710,19 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
     current = -1; placeBalloon(-1, true);
     at(200,  () => { placeBalloon(0, false, 3800); camTarget = 1.2; at(2600, () => camTarget = .25); });
     at(1400, () => { current = 0; shots[0].classList.add('on'); });
-    at(6400, () => show(1));
-    at(11600,() => show(2));
-    at(17000,() => show(3));
-    at(23000,() => show(4));
+    at(8200, () => show(1));
+    at(16000,() => show(2));
+    at(23500,() => show(3));
+    at(31500,() => show(4));
+    at(39500,() => show(FINAL));
   }
-  function finale(){ timers.forEach(clearTimeout); timers = []; show(4); }
+  function finale(){ timers.forEach(clearTimeout); timers = []; show(FINAL); }
 
   document.getElementById('replay').addEventListener('click', play);
 
   size(); addEventListener('resize', size);
   requestAnimationFrame(tick);
-  if (reduce) { shots[4].classList.add('on'); current = 4; placeBalloon(4, true); document.body.classList.add('open'); }
+  if (reduce) { shots[FINAL].classList.add('on'); current = FINAL; placeBalloon(FINAL, true); document.body.classList.add('open'); }
   else {
     document.body.classList.add('gated');
     const open = () => {
