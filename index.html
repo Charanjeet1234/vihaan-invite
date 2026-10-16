@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@400;500&display=swap">
 <style>
 /* Layout: one fixed stage like a film frame — balloon in the upper sky, each scene's words cross-fade in the lower half, clouds rise past to fake a descending camera; finale card centred. Deliberately single night-pastel theme. */
 :root{
@@ -163,6 +163,24 @@ body.open .bar.bottom{transform:translateY(100%)}
   display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.2vh,12px);
 }
 .card .crest{width:58px;height:auto;margin-top:-4px}
+.panel{display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.2vh,12px);width:100%;min-width:0}
+.panel.love{margin-top:clamp(8px,1.6vh,16px);padding-top:clamp(12px,2vh,20px);border-top:1px solid rgba(233,201,127,.3);gap:clamp(4px,.9vh,9px)}
+.rule{width:150px;height:auto;color:var(--gold);margin:2px 0}
+.elders-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+.elders-list li{font-family:var(--serif);font-weight:600;font-size:clamp(1rem, min(4vw, 2.3vh), 1.15rem);letter-spacing:.03em;color:var(--cream);line-height:1.3}
+.elders-list li span{white-space:nowrap}
+.elders-list b,.kid-names b{color:var(--gold);font-weight:500;font-style:italic;padding-inline:.15em}
+.kids{display:flex;flex-direction:column;align-items:center;gap:1px;margin:2px 0 0}
+.kids-label{font-family:var(--sans);font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.kid-names{font-family:var(--serif);font-style:italic;font-weight:600;font-size:clamp(1.2rem, min(4.8vw, 2.8vh), 1.45rem);color:var(--gold-soft)}
+.cwt{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.05rem, min(4.2vw, 2.5vh), 1.25rem);color:var(--mist);margin:4px 0 0}
+@media (min-width: 760px) and (min-aspect-ratio: 1/1){
+  .card{max-width:860px;flex-direction:row;align-items:stretch;gap:0;padding:clamp(20px,3vh,32px) 0}
+  .panel{padding-inline:clamp(20px,2.6vw,34px);justify-content:center}
+  .panel.info{flex:1.15}
+  .panel.love{flex:1;margin-top:0;padding-top:0;border-top:0;border-left:1px solid rgba(233,201,127,.3)}
+  .with-noddy .mini-noddy{width:clamp(80px, 12vh, 110px)}
+}
 .card .family{font-size:clamp(2.4rem, min(10vw, 7vh), 3.6rem)}
 .details{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(233,201,127,.3);border-block:1px solid rgba(233,201,127,.3);margin-top:4px}
 .details > div{background:rgba(22,19,60,.92);padding:clamp(6px,1.1vh,14px) 8px;display:flex;flex-direction:column;gap:3px;align-items:center}
@@ -227,11 +245,11 @@ body.open .bar.bottom{transform:translateY(100%)}
 .hearts i:nth-child(4){--x:70px;animation-delay:3.1s!important}
 .hearts i:nth-child(2)::before,.hearts i:nth-child(4)::before{background:var(--gold-soft)}
 @keyframes heart{0%{opacity:0;translate:0 0}15%{opacity:1}100%{opacity:0;translate:var(--x) -110px;rotate:20deg}}
-.noddy-name{font-size:clamp(2.6rem, min(11vw, 8vh), 4.6rem)}
+.noddy-name{font-family:var(--serif);font-style:italic;font-weight:600;letter-spacing:.01em;font-size:clamp(2.8rem, min(12vw, 8.5vh), 5rem)}
 .with-noddy{display:flex;align-items:flex-end;justify-content:center;gap:10px;margin:2px 0 0}
 .with-noddy .mini-noddy{width:clamp(60px, 8vh, 84px);flex:none;margin-bottom:-4px;filter:drop-shadow(0 6px 10px rgba(6,5,15,.45))}
 .with-noddy .mini-noddy svg{display:block;width:100%;height:auto}
-.with-noddy .nm{font-family:var(--display);font-size:clamp(2rem, min(8vw, 4.6vh), 2.6rem);color:var(--gold-soft);line-height:1;padding-bottom:10px;text-shadow:0 0 18px rgba(233,201,127,.45)}
+.with-noddy .nm{font-family:var(--serif);font-style:italic;font-weight:600;letter-spacing:.01em;font-size:clamp(1.8rem, min(7vw, 4.2vh), 2.4rem);color:var(--gold-soft);line-height:1;padding-bottom:12px;text-shadow:0 0 18px rgba(233,201,127,.45)}
 
 /* stork delivering the baby */
 #stork{position:fixed;left:0;top:27%;z-index:5;width:min(270px, 46vw);pointer-events:none;opacity:0;translate:-110% 0}
@@ -514,6 +532,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
 
   <section class="shot final" data-shot="5">
     <div class="card">
+      <div class="panel info">
       <p class="kicker">Baby Welcome Party</p>
       <p class="family">Vihaan Singh</p>
       <p class="kicker sm">Proud Parents</p>
@@ -531,10 +550,19 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
         <a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Radisson%20Blu%20Hotel%20Jammu">Directions</a>
         <button class="btn ghost" id="replay" type="button">Replay</button>
       </div>
-      <p class="sign-pre">With love,</p>
-      <p class="sign">The Singh Family</p>
-      <p class="elders sm">Mr. Sukhdev Singh &amp; Mrs. Kamal Kour</p>
-      <p class="with-noddy"><span class="mini-noddy" id="miniNoddy" aria-hidden="true"></span><span class="nm">&amp; Noddy</span></p>
+      </div>
+      <div class="panel love">
+        <p class="sign-pre">With love,</p>
+        <p class="sign">The Singh Family</p>
+        <svg class="rule" viewBox="0 0 160 12" aria-hidden="true"><path d="M2 6h60M98 6h60" stroke="currentColor" stroke-width="1"/><path d="M80 1l2.2 4.8L87 6l-4.8 1.2L80 12l-2.2-4.8L73 6l4.8-1.2Z" fill="currentColor"/></svg>
+        <ul class="elders-list">
+          <li><span>Mr. Budh Singh</span> <b>&amp;</b> <span>Mrs. Pyar Kour</span></li>
+          <li><span>Mr. Lakhwinder Singh</span> <b>&amp;</b> <span>Mrs. Hardeep Kour</span></li>
+        </ul>
+        <p class="kids"><span class="kids-label">and the little ones</span><span class="kid-names">✧ Seerat <b>&amp;</b> Saira ✧</span></p>
+        <p class="cwt">Can't wait to see you all!</p>
+        <p class="with-noddy"><span class="mini-noddy" id="miniNoddy" aria-hidden="true"></span><span class="nm">&amp; Noddy</span></p>
+      </div>
     </div>
   </section>
 </main>
@@ -706,7 +734,11 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
     camTarget = 1.6; timers.push(setTimeout(() => camTarget = .25, 2200));
     if (i === 1) timers.push(setTimeout(flyStork, 300));
     if (i === 3) timers.push(setTimeout(() => burst(document.getElementById('name')), 2000));
-    if (i === FINAL) { document.body.classList.add('open'); camTarget = .25; }
+    if (i === FINAL) {
+      document.body.classList.add('open'); camTarget = .25;
+      const f = shots[FINAL]; f.scrollTop = 0;
+      timers.push(setTimeout(() => { if (f.scrollHeight > f.clientHeight + 8) f.scrollTo({top: f.scrollHeight, behavior: 'smooth'}); }, 5000));
+    }
   }
   const stork = document.getElementById('stork');
   function flyStork(){ stork.classList.remove('fly'); void stork.offsetWidth; stork.classList.add('fly'); }
