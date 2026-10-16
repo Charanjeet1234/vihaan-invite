@@ -357,6 +357,19 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
 .lk-italic{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.4rem, min(6.4vw, 4vh), 2.2rem);color:var(--cream);margin-top:4px}
 .gate-lock{animation:fadeUp 1.4s ease .2s both;gap:2px}
 .gate .kicker{margin-top:4px}
+
+/* ---- typewriter ---- */
+[data-type]{visibility:hidden}
+[data-type].typing,[data-type].typed{visibility:visible}
+.tw-word{white-space:nowrap}
+.tw-ch{opacity:0;display:inline;transition:opacity .22s ease, filter .22s ease;filter:blur(3px)}
+.tw-ch.on{opacity:1;filter:blur(0)}
+#caret{position:fixed;left:0;top:0;width:2px;border-radius:2px;background:linear-gradient(180deg, var(--gold-soft), var(--gold));
+  box-shadow:0 0 10px rgba(248,231,187,.8);z-index:9;pointer-events:none;opacity:0;transition:opacity .3s ease}
+#caret.show{opacity:1;animation:caretBlink .9s steps(1) infinite}
+#caret.typing{animation:none;opacity:1}
+@keyframes caretBlink{50%{opacity:0}}
+@media (prefers-reduced-motion: reduce){ [data-type]{visibility:visible} #caret{display:none} }
 </style>
 </head>
 <body>
@@ -513,31 +526,31 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
 <main class="stage" id="stage">
   <!-- 0 -->
   <section class="shot" data-shot="0">
-    <p class="kicker">With hearts full of joy</p>
-    <p class="family">The Singh Family</p>
-    <p class="elders later" style="--t:1s">Mr. Sukhdev Singh &amp; Mrs. Kamal Kour</p>
-    <p class="lockup later" style="--t:1.9s"><span class="lk-caps sm">are delighted to share</span><span class="lk-italic">some very happy news</span></p>
+    <p class="kicker" data-type="30">With hearts full of joy</p>
+    <p class="family" data-type="75">The Singh Family</p>
+    <p class="elders" data-type="32">Mr. Sukhdev Singh &amp; Mrs. Kamal Kour</p>
+    <p class="lockup"><span class="lk-caps sm" data-type="30">are delighted to share</span><span class="lk-italic" data-type="42">some very happy news</span></p>
   </section>
 
   <!-- 1 -->
   <section class="shot" data-shot="1">
-    <p class="kicker">✦ A little star has arrived ✦</p>
-    <h1 class="lockup write" aria-label="Welcome to the World, Little One!"><span class="lk-caps">Welcome to the</span><span class="lk-big gold">World</span><span class="lk-script">Little One!</span></h1>
+    <p class="kicker" data-type="30">✦ A little star has arrived ✦</p>
+    <h1 class="lockup" aria-label="Welcome to the World, Little One!"><span class="lk-caps" data-type="45">Welcome to the</span><span class="lk-big gold" data-type="130">World</span><span class="lk-script" data-type="75">Little One!</span></h1>
   </section>
 
   <!-- 2 -->
   <section class="shot" data-shot="2">
-    <p class="kicker sm">You are lovingly invited to a</p>
-    <p class="lockup write" aria-label="Baby Welcome Party"><span class="lk-script lk-xl">Baby</span><span class="lk-serifcaps gold">Welcome Party</span></p>
-    <p class="kicker sm later" style="--t:2.8s">in honour of our precious son</p>
+    <p class="kicker sm" data-type="28">You are lovingly invited to a</p>
+    <p class="lockup" aria-label="Baby Welcome Party"><span class="lk-script lk-xl" data-type="110">Baby</span><span class="lk-serifcaps gold" data-type="60">Welcome Party</span></p>
+    <p class="kicker sm" data-type="28">in honour of our precious son</p>
   </section>
 
   <!-- 3 -->
   <section class="shot" data-shot="3">
     <svg class="flourish" viewBox="0 0 220 20" aria-hidden="true"><path d="M2 10h84M134 10h84" stroke="currentColor" stroke-width="1"/><path d="M110 2l3 6 6 2-6 2-3 6-3-6-6-2 6-2Z" fill="currentColor"/><circle cx="94" cy="10" r="2" fill="currentColor"/><circle cx="126" cy="10" r="2" fill="currentColor"/></svg>
-    <p class="script xxl write name-glow" id="name">Vihaan Singh</p>
-    <p class="kicker sm later" style="--t:2.4s">Proud Parents</p>
-    <p class="parents later" style="--t:2.9s">Charanjeet &amp; Gunjan</p>
+    <p class="script xxl name-glow" id="name" data-type="95">Vihaan Singh</p>
+    <p class="kicker sm" data-type="28">Proud Parents</p>
+    <p class="parents" data-type="45">Charanjeet &amp; Gunjan</p>
   </section>
 
   <!-- 4 finale -->
@@ -582,9 +595,9 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
     <circle cx="74" cy="96" r="5" fill="#f7a8bd" opacity=".55"/><circle cx="126" cy="96" r="5" fill="#f7a8bd" opacity=".55"/>
   </g>
 </svg><div class="hearts"><i></i><i></i><i></i><i></i></div></div>
-    <p class="kicker">✦ And a very excited big brother ✦</p>
-    <p class="script noddy-name write">Noddy</p>
-    <p class="italic later" style="--t:2.6s">can't wait to cuddle you, little Vihaan!</p>
+    <p class="kicker" data-type="30">✦ And a very excited big brother ✦</p>
+    <p class="script noddy-name" data-type="120">Noddy</p>
+    <p class="italic" data-type="38">can't wait to cuddle you, little Vihaan!</p>
   </section>
 
   <section class="shot final" data-shot="5">
@@ -624,6 +637,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   </section>
 </main>
 
+<div id="caret" aria-hidden="true"></div>
 <div class="bar top" aria-hidden="true"></div>
 <div class="bar bottom" aria-hidden="true"></div>
 
@@ -787,6 +801,7 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   function show(i){
     current = i;
     shots.forEach((s, k) => s.classList.toggle('on', k === i));
+    if (i < FINAL) typeShot(shots[i]); else { typeRun++; caret.classList.remove('show','typing'); }
     placeBalloon(i, false, i === FINAL ? 2600 : 3000);
     camTarget = 1.6; timers.push(setTimeout(() => camTarget = .25, 2200));
     if (i === 1) timers.push(setTimeout(flyStork, 300));
@@ -798,14 +813,96 @@ body.gated .gate{transition:opacity 1.2s ease, visibility 0s}
   }
   const stork = document.getElementById('stork');
   function flyStork(){ stork.classList.remove('fly'); void stork.offsetWidth; stork.classList.add('fly'); }
+
+  /* ---------- typewriter: letters appear one by one, layout never shifts ---------- */
+  const caret = document.getElementById('caret');
+  const GRAD = el => el.matches('.gold, .script, .lk-script, .family, #name');
+  let typeRun = 0;
+  function prepType(el){
+    el.classList.remove('typing','typed'); el.style.clipPath = '';
+    if (!el.dataset.text) el.dataset.text = el.textContent;
+    if (GRAD(el)) { el.textContent = el.dataset.text; return; }
+    // wrap words -> letters so line breaks stay identical while typing
+    el.textContent = '';
+    el.dataset.text.split(/(\s+)/).forEach(part => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) { el.appendChild(document.createTextNode(part)); return; }
+      const w = document.createElement('span'); w.className = 'tw-word';
+      for (const ch of part) { const c = document.createElement('span'); c.className = 'tw-ch'; c.textContent = ch; w.appendChild(c); }
+      el.appendChild(w);
+    });
+  }
+  function placeCaret(r, el){
+    const cs = getComputedStyle(el), fs = parseFloat(cs.fontSize);
+    const h = Math.max(12, Math.min(r.height, fs * 1.05));
+    caret.style.height = h + 'px';
+    caret.style.transform = `translate(${r.right + 3}px, ${r.top + (r.height - h)/2}px)`;
+  }
+  function charRects(el){
+    // right edge of each visible character for gradient/script text (single line)
+    const out = [], node = el.firstChild; if (!node) return out;
+    const range = document.createRange(), txt = node.textContent;
+    for (let i = 0; i < txt.length; i++){
+      range.setStart(node, 0); range.setEnd(node, i + 1);
+      const rs = range.getClientRects(), r = rs[rs.length - 1];
+      if (r) out.push(r);
+    }
+    return out;
+  }
+  function typeOne(el, run){
+    return new Promise(res => {
+      const speed = +el.dataset.type || 45;
+      el.classList.add('typing'); caret.classList.add('show','typing');
+      if (GRAD(el)){
+        const box = el.getBoundingClientRect(), rects = charRects(el);
+        let i = 0;
+        el.style.clipPath = 'inset(-60% 100% -60% 0)';
+        const step = () => {
+          if (run !== typeRun) return res();
+          if (i >= rects.length){ el.style.clipPath = 'none'; el.classList.replace('typing','typed'); return res(); }
+          const r = rects[i], cut = Math.max(0, box.right - r.right - 1);
+          el.style.clipPath = `inset(-60% ${cut}px -60% -40%)`;
+          const lb = el.getBoundingClientRect(); placeCaret({right: r.right, top: lb.top, height: lb.height}, el);
+          i++; timers.push(setTimeout(step, speed));
+        };
+        step();
+      } else {
+        const chs = [...el.querySelectorAll('.tw-ch')]; let i = 0;
+        const step = () => {
+          if (run !== typeRun) return res();
+          if (i >= chs.length){ el.classList.replace('typing','typed'); return res(); }
+          chs[i].classList.add('on');
+          placeCaret(chs[i].getBoundingClientRect(), el);
+          i++; timers.push(setTimeout(step, chs[i-1].textContent.trim() ? speed : speed * .5));
+        };
+        step();
+      }
+    });
+  }
+  const pause = ms => new Promise(r => timers.push(setTimeout(r, ms)));
+  async function typeShot(shot){
+    const run = ++typeRun;
+    const els = [...shot.querySelectorAll('[data-type]')];
+    els.forEach(prepType);
+    await pause(700);
+    for (const el of els){
+      if (run !== typeRun) return;
+      await typeOne(el, run);
+      await pause(260);
+    }
+    if (run !== typeRun) return;
+    caret.classList.remove('typing');
+    timers.push(setTimeout(() => { if (run === typeRun) caret.classList.remove('show'); }, 1600));
+  }
+  function resetTyping(){ typeRun++; caret.classList.remove('show','typing'); document.querySelectorAll('[data-type]').forEach(prepType); }
   const at = (ms, fn) => timers.push(setTimeout(fn, ms));
   function play(){
     timers.forEach(clearTimeout); timers = [];
     document.body.classList.remove('open'); stork.classList.remove('fly');
-    shots.forEach(s => s.classList.remove('on'));
+    shots.forEach(s => s.classList.remove('on')); resetTyping();
     current = -1; placeBalloon(-1, true);
     at(200,  () => { placeBalloon(0, false, 3800); camTarget = 1.2; at(2600, () => camTarget = .25); });
-    at(1400, () => { current = 0; shots[0].classList.add('on'); });
+    at(1400, () => { current = 0; shots[0].classList.add('on'); typeShot(shots[0]); });
     at(9500, () => show(1));
     at(19500,() => show(2));
     at(29000,() => show(3));
