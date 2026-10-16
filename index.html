@@ -392,7 +392,7 @@ body.intro #ground{opacity:1}
 #crawler.go .head{animation:headNod 1s ease-in-out infinite}
 @keyframes headNod{50%{rotate:-5deg}}
 .pass{transition:opacity .25s ease}
-body.empty .pass{opacity:0}
+body.empty .pass{opacity:0;transition:none}
 
 /* ---- speech bubbles ---- */
 .say{position:fixed;left:0;top:0;z-index:9;pointer-events:none;opacity:0;transform-origin:50% 100%;
@@ -441,6 +441,12 @@ body.empty .pass{opacity:0}
 @keyframes famHeart{0%{opacity:0;translate:0 0}12%{opacity:.85}70%{opacity:.6}100%{opacity:0;translate:24px -70vh;rotate:25deg}}
 
 .cwt.see{margin-top:6px;color:var(--cream);letter-spacing:.01em}
+
+/* video build: no tap hint, no buttons */
+body.video .gate .hint{visibility:hidden}
+body.video .actions{display:none}
+.seal.press{animation:sealPress .9s cubic-bezier(.3,1.5,.5,1) forwards!important}
+@keyframes sealPress{0%{transform:scale(1)}30%{transform:scale(.86);filter:brightness(1.15)}65%{transform:scale(1.14);filter:brightness(1.35) drop-shadow(0 0 30px rgba(248,231,187,.9))}100%{transform:scale(1.05);filter:brightness(1.2)}}
 </style>
 </head>
 <body>
@@ -822,7 +828,7 @@ body.empty .pass{opacity:0}
   function placeBalloon(i, instant, dur=3200){
     const t = targetFor(i);
     if (instant){ bal = t; from = to = null; apply(); return; }
-    from = {...bal}; to = t; bStart = performance.now(); bDur = dur;
+    from = {...bal}; to = t; bStart = nowT(); bDur = dur;
   }
   function apply(){
     balloon.style.transform = `translate(-50%, ${bal.y}px) scale(${bal.s})`;
@@ -831,7 +837,9 @@ body.empty .pass{opacity:0}
 
   /* ---------- render loop ---------- */
   let camSpeed = .25, camTarget = .25, last = performance.now();
-  function tick(t){
+  const VIDEO = !!window.__VIDEO; let vclock = 0, vacc = 0;
+  const nowT = () => VIDEO ? vclock : performance.now();
+  function tickBody(t){
     const dt = Math.min(50, t - last); last = t;
     if (to){
       const k = Math.min(1, (t - bStart)/bDur), e = ease(k);
@@ -910,6 +918,15 @@ body.empty .pass{opacity:0}
       if (c.round){ fctx.beginPath(); fctx.arc(0, 0, c.w/2, 0, 6.283); fctx.fill(); } else fctx.fillRect(-c.w/2, -c.h/2, c.w, c.h);
       fctx.restore();
     }
+  }
+  function tick(t){
+    if (VIDEO){ // fixed 60 steps per film-second, however slowly the recorder renders
+      // rAF timestamps already follow the recorder's slowed animation clock
+      const rdt = t - (tick._r || t); tick._r = t; vacc += rdt;
+      let n = 0;
+      while (vacc >= 16.667 && n < 6){ vacc -= 16.667; vclock += 16.667; last = vclock - 16.667; tickBody(vclock); n++; }
+      if (n === 6) vacc = 0;
+    } else tickBody(t);
     requestAnimationFrame(tick);
   }
   let confetti = [];
@@ -1165,6 +1182,15 @@ body.empty .pass{opacity:0}
       setTimeout(play, 500);
     };
     document.getElementById('gate').addEventListener('click', open);
+    if (VIDEO){
+      document.body.classList.add('video');
+      setTimeout(() => {
+        const seal = document.getElementById('open'), r = seal.getBoundingClientRect();
+        seal.classList.add('press');
+        setTimeout(() => burstAt(r.left + r.width/2, r.top + r.height/2, 90), 260);
+        setTimeout(open, 900);
+      }, 3200);
+    }
   }
 })();
 </script>
